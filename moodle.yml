@@ -14,7 +14,7 @@ services:
       - "./var/lib/mysql/:/var/lib/mysql"
     environment:
       - "MYSQL_ROOT_PASSWORD=1234"
-      - "MYSQL_DATABASE=moodle"
+      - "MYSQL_DATABASE=moodle_cocina"
       - "MYSQL_USER=uadmin"
       - "MYSQL_PASSWORD=abc123."
     networks:
@@ -29,12 +29,13 @@ services:
       - "./var/www/html/:/var/www/html"
       - "./var/www/moodledata:/var/www/moodledata"
     environment:
-      - "MOODLE_DB_TYPE=mysql"
-      - "MOODLE_DB_HOST=database"
-      - "MOODLE_DB_PORT=3306"
-      - "MOODLE_DB_NAME=moodle"
-      - "MOODLE_DB_USER=uadmin"
-      - "MOODLE_DB_PASSWORD=abc123."
+      - "MOODLE_USERNAME=uadmin"
+      - "MOODLE_PASSWORD=abc123."
+      - "MOODLE_LANG=es"
+      - "MOODLE_DATABASE_TYPE=mysql"
+      - "MOODLE_DATABASE_HOST=mysql"
+      - "MOODLE_DATABASE_NAME=moodle_cocina"
+      - "MOODLE_DATABASE_USER=uadmin"
     depends_on:
       - mysql
     networks:
