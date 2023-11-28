@@ -42,7 +42,8 @@ services:
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: moodle_cocina-phpmyadmin
-    ports: "9006:80"
+    ports:
+      - "9006:80"
     environment:
       - "PMA_HOST=moodle_cocina-mysql"
       - "MYSQL_ROOT_PASSWORD=1234"
