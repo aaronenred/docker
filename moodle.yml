@@ -2,7 +2,7 @@ version: "3"
 
 networks:
     moodle_cocina-net:
-        driver: bridge   
+        driver: bridge
 services:
   mysql:
     image: mysql:5.7
@@ -13,10 +13,10 @@ services:
     volumes:
       - "./var/lib/mysql/:/var/lib/mysql"
     environment:
-      - MYSQL_ROOT_PASSWORD=1234
-      - MYSQL_DATABASE=moodle
-      - MYSQL_USER=uadmin
-      - MYSQL_PASSWORD=abc123.
+      - "MYSQL_ROOT_PASSWORD=1234"
+      - "MYSQL_DATABASE=moodle"
+      - "MYSQL_USER=uadmin"
+      - "MYSQL_PASSWORD=abc123."
     networks:
       - moodle_cocina-net
   moodle:
@@ -29,12 +29,12 @@ services:
       - "./var/www/html/:/var/www/html"
       - "./var/www/moodledata:/var/www/moodledata"
     enviroment:
-      - MOODLE_DB_TYPE=mysql
-      - MOODLE_DB_HOST=database
-      - MOODLE_DB_PORT=3306
-      - MOODLE_DB_NAME=moodle
-      - MOODLE_DB_USER=uadmin
-      - MOODLE_DB_PASSWORD=abc123.
+      - "MOODLE_DB_TYPE=mysql"
+      - "MOODLE_DB_HOST=database"
+      - "MOODLE_DB_PORT=3306"
+      - "MOODLE_DB_NAME=moodle"
+      - "MOODLE_DB_USER=uadmin"
+      - "MOODLE_DB_PASSWORD=abc123."
     depends_on:
       - mysql
     networks:
@@ -44,8 +44,8 @@ services:
     container_name: moodle_cocina-phpmyadmin
     ports: "9006:80"
     environment:
-      - PMA_HOST=moodle_cocina-mysql
-      - MYSQL_ROOT_PASSWORD=1234
+      - "PMA_HOST=moodle_cocina-mysql"
+      - "MYSQL_ROOT_PASSWORD=1234"
     depends_on:
       - mysql
     networks:
