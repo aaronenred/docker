@@ -28,7 +28,7 @@ services:
     volumes:
       - "./var/www/html/:/var/www/html"
       - "./var/www/moodledata:/var/www/moodledata"
-    enviroment:
+    environment:
       - "MOODLE_DB_TYPE=mysql"
       - "MOODLE_DB_HOST=database"
       - "MOODLE_DB_PORT=3306"
