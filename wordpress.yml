@@ -1,55 +1,55 @@
 version: "3"
 
-#Crearemos la red para que los contenedores estén conectados entre sí.
+#Crearemos la red para que los contenedores estén contectados entre sí.
 networks:
     wordpress_gatitos-net:
         driver: bridge
 
 services:
 
-    #Crearemos el contenedor con MySQL
-    mysql:
-        image: mysql:5.7
-        container_name: wordpress_gatitos-mysql
-        tty: true  #'true 'Nos permite lanzar comandos desde la temrinal
-        ports:
-            - "9001:3306"  #Usaremos el puerto 9001
-        volumes:  #Crearemos un volumen persistente
-            - "./var/libclea/mysql/:/var/lib/mysql"
-        environment:  #Variables de entorno
-            MYSQL_ROOT_PASSWORD: 1234
-            MYSQL_DATABASE: wordpress
-            MYSQL_USER: uadmin
-            MYSQL_PASSWORD: abc123.
-        networks:  #Para que use la red que creamos anteriormente
-            - wordpress_gatitos-net
+  #Crearemos el contenedor con MySQL
+  mysql:
+      image: mysql:5.7
+      container_name: wordpress_gatitos-mysql
+      tty: true  #'true' Nos permite lanzar comandos SQL desde la temrinal
+      ports:
+          - "9001:3306"  #Usaremos el puerto 9001
+      volumes:  #Crearemos un volumen persistente
+          - "./var/lib/mysql/:/var/lib/mysql"
+      environment:  #Variables de entorno
+          - "MYSQL_ROOT_PASSWORD=1234"
+          - "MYSQL_DATABASE=moodle"
+          - "MYSQL_USER=uadmin"
+          - "MYSQL_PASSWORD=abc123."
+      networks:  #Para que use la red que creamos anteriormente
+          - wordpress_gatitos-net
 
-    server:
-        image: wordpress:latest
-        container_name: wordpress_gatitos
-        ports:
-            - "9002:80"
-        volumes:
-            - "./var/www/html/:/var/www/html"
-        environment:
-            WORDPRESS_DB_USER: uadmin
-            WORDPRESS_DB_PASSWORD: abc123.
-            WORDPRESS_DB_NAME: wordpress
-            WORDPRESS_DB_HOST: wordpress_gatitos-mysql
-        depends_on:
-            - mysql
-        networks:
-            - wordpress_gatitos-net
+  wordpress:
+      image: wordpress:latest
+      container_name: wordpress_gatitos
+      ports:
+          - "9002:80"
+      volumes:
+          - "./var/www/html/:/var/www/html"
+      environment:
+          - "WORDPRESS_DB_USER=uadmin"
+          - "WORDPRESS_DB_PASSWORD=abc123."
+          - "WORDPRESS_DB_NAME=wordpress"
+          - "WORDPRESS_DB_HOST=wordpress_gatitos-mysql"
+      depends_on:
+          - mysql
+      networks:
+          - wordpress_gatitos-net
 
-    phpmyadmin:
-        image: phpmyadmin/phpmyadmin
-        container_name: wordpress_gatitos-phpmyadmin
-        ports:
-            - "9003:80"
-        environment:
-            PMA_HOST: wordpress_gatitos-mysql
-            MYSQL_ROOT_PASSWORD: 1234
-        depends_on:
-            - mysql
-        networks:
-            - wordpress_gatitos-net
+  phpmyadmin:
+      image: phpmyadmin/phpmyadmin
+      container_name: wordpress_gatitos-phpmyadmin
+      ports:
+          - "9003:80"
+      environment:
+          - "PMA_HOST=wordpress_gatitos-mysql"
+          - "MYSQL_ROOT_PASSWORD=1234"
+      depends_on:
+          - mysql
+      networks:
+          - wordpress_gatitos-net
