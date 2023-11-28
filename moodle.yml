@@ -20,7 +20,7 @@ services:
     networks:
       - moodle_cocina-net
   moodle:
-    image: moodle:4.3
+    image: docker.io/bitnami/moodle:4.3
     container_name: moodle_cocina
     ports:
       - "9005:8080"
