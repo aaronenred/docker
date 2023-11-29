@@ -20,22 +20,22 @@ services:
     networks:
       - moodle_cocina-net
   moodle:
-    image: docker.io/bitnami/moodle:4.3
+    image: bitnami/moodle:4.1.6
     container_name: moodle_cocina
     ports:
       - "9005:8080"
       #- "443:8443"  # Que pasará si descomentamos esta línea?
     volumes:
       - "./var/www/html/:/var/www/html"
-      - "./var/www/moodledata:/var/www/moodledata"
+      - "./var/www/moodledata:/bitnami/moodledata"
     environment:
       - "MOODLE_USERNAME=uadmin"
       - "MOODLE_PASSWORD=abc123."
-      - "MOODLE_LANG=es"
-      - "MOODLE_DATABASE_TYPE=mysql"
+      - "MOODLE_DATABASE_TYPE=mysqli"
       - "MOODLE_DATABASE_HOST=mysql"
       - "MOODLE_DATABASE_NAME=moodle_cocina"
       - "MOODLE_DATABASE_USER=uadmin"
+      - "MOODLE_DATABASE_PASSWORD=abc123."
     depends_on:
       - mysql
     networks:

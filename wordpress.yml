@@ -18,7 +18,7 @@ services:
           - "./var/lib/mysql/:/var/lib/mysql"
       environment:  #Variables de entorno
           - "MYSQL_ROOT_PASSWORD=1234"
-          - "MYSQL_DATABASE=moodle"
+          - "MYSQL_DATABASE=wordpress"
           - "MYSQL_USER=uadmin"
           - "MYSQL_PASSWORD=abc123."
       networks:  #Para que use la red que creamos anteriormente
