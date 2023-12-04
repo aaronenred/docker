@@ -5,7 +5,8 @@ services:
     image: "python:3.11.2-alpine3.17"
     container_name: python_pyBot
     tty: true
-    restart: "on-failure --restart-max-retry 3"
+    restart: "on-failure"
+    resatart_max_retries: 3
     volumes:
       - "/docker-volumes/python_pyBot:/root/pyBot"
     command:
