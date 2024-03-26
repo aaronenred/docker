@@ -3,6 +3,6 @@ services:
     container_name: "jupyter-python"
     image: "quay.io/jupyter/minimal-notebook:latest"
     volumes:
-      - "/srv/clases/Programacion/Python/apuntes:/home/jovyan"
+      - "/srv/clases/Programacion/Python/apuntes:/home/jovyan/work"
     ports:
       - "10001:8888"
