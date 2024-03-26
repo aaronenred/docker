@@ -1,0 +1,13 @@
+version: "3.1"
+
+services:
+  mysql:
+    container_name: MySQL-BD
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: abc123.
+      MYSQL_DATABASE: CS-DAW_BD
+      MYSQL_USER: uadmin
+      MYSQL_PASSWORD: abc123.
+    ports:
+      - "3306:3306"
