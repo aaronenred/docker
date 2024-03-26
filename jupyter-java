@@ -1,0 +1,8 @@
+services:
+  jupyter-java:
+    container_name: "jupyter-java"
+    image: "quay.io/jupyter/minimal-notebook:latest"
+    volumes:
+      - "/srv/clases/Programacion/Java/apuntes:/home/jovyan/work"
+    ports:
+      - "10002:8888"
