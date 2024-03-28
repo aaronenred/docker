@@ -1,11 +1,11 @@
 services:
-  jupyter-python:
-    container_name: "jupyter-python"
+  jupyter-java:
+    container_name: "jupyter-java"
     image: "quay.io/jupyter/minimal-notebook:latest"
     volumes:
-      - "/srv/clases/Programacion/Python/apuntes:/home/jovyan/work"
+      - "/srv/clases/Programacion/Java/apuntes:/home/jovyan/work"
     ports:
-      - "10001:8888"
+      - "10002:8888"
 
     # 'healthcheck' establece cual será el comando y cuales serán los tiempos para decir si un contenedor está sano, insano o ha fallado 
     healthcheck:
