@@ -5,3 +5,7 @@ Este repositorio proporciona diversos archivos docker-compose.yml para diferente
 # Uso
 
 Basta con descargar el archivo con nombre del servicio que se quiere (ex: wordpress.yml) y cambiarle el nombre a "docker-compose.yml". Tras eso y estando en el mismo directorio que el archivo lanzaremos el comando `docker compose up -d` para lanzar el contenedor/contenedores.
+
+---
+
+Dedicado principalmente a mi profesora de lenguajes de marcas en 1ºDAW Jeny, por permitirme enseñarle lo poco que sabía y aprender para enseñar a otros.
